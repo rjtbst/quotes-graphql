@@ -1,7 +1,6 @@
 import {ApolloServer} from 'apollo-server';
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core';
 import typeDefs from './schemGql.js';
-import resolvers from './resolvers.js';
 import { MONGO_URI } from './config.js';
 import mongoose from 'mongoose';
 
@@ -20,8 +19,11 @@ mongoose.connection.on("error",(err)=>{
     console.log("error",err);
 })
 
+//TODO: import models
+import resolvers from './resolvers.js';
+
 const server = new ApolloServer({
-    typeDefs,
+    typeDefs, 
     resolvers,
     plugins:[
         ApolloServerPluginLandingPageGraphQLPlayground
