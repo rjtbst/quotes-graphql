@@ -1,0 +1,79 @@
+query getAllUsers{
+ users{
+  _id
+  firstName
+ email
+  quotes {
+    name
+  }
+}
+}
+
+--------------------------
+query getAllQuotes {
+  quotes{
+    name
+    by{
+      _id
+      firstName
+    }
+  }
+}
+
+---------------------------
+query getIndividualQuotById($userId:ID!) {
+  iquote(by:$userId){
+    name
+    by
+    }
+  }
+
+------------------------------
+query getIndividualUserById ($userId:ID!){
+  user(_id:$userId){
+    _id
+    firstName
+    email
+    quotes {
+      name
+      by
+    }
+  }
+}
+
+{
+  "userId":"6252cc74247e57e161e68183"
+}
+
+---------------------------------
+mutation createUser($userNew:UserInput!) {
+ user: signupUser(userNew:$userNew){
+    _id
+    email
+    firstName
+    lastName
+
+  }
+}
+
+{
+  "userNew": {
+     "firstName": "kannu",
+    "lastName": "sharma",
+    "email": "kannu@kannu.com",
+    "password": "123456"
+  }
+}
+-----------------------------------
+mutation SigninUser($userSignin:UserSigninInput!) {
+ user: signinUser(userSignin:$userSignin){
+    token
+  }
+}
+
+{
+  "userSignin": {
+    "email": "shubham@shubham.com",
+    "password": "abcd"
+  }
+}
