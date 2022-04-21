@@ -1,1 +1,2 @@
 export const MONGO_URI = "mongodb+srv://rajat123:rajat123456@cluster0.rw2ia.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+export const JWT_SECRET = "HELLOTHERETHISISASECRETKEYGENERATEDFORJWTTOKEN"

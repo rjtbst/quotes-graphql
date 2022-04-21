@@ -19,7 +19,9 @@ mongoose.connection.on("error",(err)=>{
     console.log("error",err);
 })
 
-//TODO: import models
+
+import "./models/User.js";
+import "./models/Quote.js"
 import resolvers from './resolvers.js';
 
 const server = new ApolloServer({
