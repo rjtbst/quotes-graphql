@@ -77,3 +77,14 @@ mutation SigninUser($userSignin:UserSigninInput!) {
     "password": "abcd"
   }
 }
+
+------------------------------
+mutation createQuote{
+  createQuote(name:"new quote"){
+    name
+  }
+   }
+
+   {
+  "authorization": ""
+}
