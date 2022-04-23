@@ -34,7 +34,9 @@ const resolvers = {
       const passMatch = await bcrypt.compare(userSignin.password, user.password)
       if (!passMatch) { throw new Error("invalid credentials") }
       const token = jwt.sign({ userId: user._id }, JWT_SECRET)
+
       return { token }
+
     },
 
     createQuote: async (_, {name},{userId}) => {
@@ -49,12 +51,13 @@ const resolvers = {
       
     },
        //need to fix
-     updateQuote: async(_, args)=>{
-      return await Quote.findByIdAndUpdate(
-        args.by,{
-          $set:{ name: args.name }
-        },{new:true}
-      )
+
+     updateQuote: async(_, {name})=>{
+      await Quote.findByIdAndUpdate(_id,name, {
+        new: true
+      })
+          return Quote.findOne({ _id });
+
     } 
 
   }
