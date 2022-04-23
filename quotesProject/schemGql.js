@@ -17,6 +17,7 @@ type User {
     quotes:[Quote]
 }
 type Quote {
+    _id:ID!
     name:String!
     by:ID!
 }
@@ -36,7 +37,7 @@ type Mutation {
     signupUser(userNew:UserInput!):User
     signinUser(userSignin:UserSigninInput!): Token
     createQuote(name:String!) : Quote 
-    updateQuote(name:String! ,by:ID!) : Quote
+    updateQuote(name:String! _id:ID!) : Quote
 }
 
 
