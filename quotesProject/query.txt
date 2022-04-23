@@ -77,3 +77,25 @@ mutation SigninUser($userSignin:UserSigninInput!) {
     "password": "abcd"
   }
 }
+
+------------------------------
+mutation createQuote{
+  createQuote(name:"new quote"){
+    name
+  }
+   }
+
+   {
+  "authorization": ""
+}
+
+------------------
+ mutation user_update($id: ID!, $userInput: user_update_input!) {
+    user: user_update(_id: $id, data: $userInput) {
+      _id
+      owning_organization_id
+      username
+      name
+    }
+  }
+`;
