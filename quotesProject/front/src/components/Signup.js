@@ -7,12 +7,14 @@ const Signup = () => {
     const navigate = useNavigate()
     const[signupData,setSignupData] = useState({})
     //returns array- 1st method 2nd data
-    const[signupUser,{loading,error,data}]  = useMutation(SIGNUP_USER)
+    const[signupUser,{loading,error,data}]  = useMutation(SIGNUP_USER,{
+        onCompleted(data){
+        navigate('/login')
+        }
+    })
     
     if(loading)return <h1>loading...</h1>
-    if(data){
-        navigate('/login')
-    }
+    
     const handleChange=(e)=>{
          setSignupData({
              ...signupData,
@@ -31,11 +33,11 @@ const Signup = () => {
     return (
         <div className='container my-container'>
          { 
-           error && <div className='red lighten-3 white-text card-panel'>{error.message}</div>
+           error && <div className='red text-white card-panel'>{error.message}</div>
          }
         {
             data && data.user && 
-            <div className='teal lighten-2 white-text card-panel'>{data.user.firstName} registered successfully.</div>
+            <div className='teal text-white card-panel'>{data.user.firstName} registered successfully.</div>
         }
             <h5>Signup...</h5>
              <form onSubmit={(e)=>handleSubmit(e)}>

@@ -26,9 +26,9 @@ import "./models/Quote.js"
 import resolvers from './resolvers.js';
 
 const context =({req})=>{
-    const {authorization} = req.headers 
+    const {authorization} = req.headers; 
     if(authorization){
-      const{userId}=  jwt.verify(authorization, JWT_SECRET )
+      const {userId}=  jwt.verify(authorization, JWT_SECRET )
       return {userId}
     }       
  }

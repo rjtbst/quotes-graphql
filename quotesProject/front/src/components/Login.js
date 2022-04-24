@@ -37,11 +37,11 @@ const Login = () => {
     return (
         <div className='container my-container'>
         {
-            error && <div className='red lighten-3 white-text card-panel'>{error.message}</div>
+            error && <div className='red '>{error.message}</div>
         }
         {
             data && data.user.token && 
-            <div teal lighten-2 white-text card-panel> login Succesfully</div>
+            <div className='teal lighten-2 white-text card-panel'> login Succesfully</div>
         }
             <h5>Login...</h5>
             <form onSubmit={(e)=>handleSubmit(e)}>

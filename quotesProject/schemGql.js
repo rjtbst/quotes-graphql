@@ -7,6 +7,7 @@ type Query{
      user(_id:ID!):User
      quotes:[QuoteWithName] 
      iquote(by:ID!):[Quote] 
+     myprofile: User
 }
 type User {
     _id:ID!
@@ -36,10 +37,8 @@ type Token {
 type Mutation {
     signupUser(userNew:UserInput!):User
     signinUser(userSignin:UserSigninInput!): Token
-    createQuote(name:String!) : Quote 
-
-    updateQuote(name:String! _id:ID!) : Quote
-
+   createQuote(name:String!) : String
+   
 }
 
 
