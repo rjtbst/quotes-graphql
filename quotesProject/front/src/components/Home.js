@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client'
 import React from 'react'
 import { GET_ALL_QUOTES } from '../gqlOperation/queries'
+// import {useNavigate} from 'react-router-dom'
 
 const Home = () => {
   const {loading, error, data}  =useQuery(GET_ALL_QUOTES)
@@ -11,6 +12,10 @@ const Home = () => {
   if(data){
     console.log(data);
   }
+ //TODO: conditional rendering in useEffect  
+
+
+  
   return (
     <div className='container'>
     {

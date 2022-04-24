@@ -10,7 +10,12 @@ const resolvers = {
     users: async()=> await User.find({}),
     user: async(_,{_id})=> await User.findOne({_id}),
     quotes:async()=> await Quote.find({}).populate("by","_id firstName"),
-    iquote: async(_,{by})=> await Quote.findOne({by})
+    iquote: async(_,{by})=> await Quote.findOne({by}),
+    myprofile: async(_,args,{userId})=>{
+     if(!userId) throw new Error("you must be logged in")
+     return await User.findOne({_id:userId})
+    } 
+      
   },
   User:{
    quotes:async(par)=> await Quote.find({by:par._id})
@@ -45,17 +50,20 @@ const resolvers = {
         name,
         by: userId
       })
-      return await newQuote.save()
-      
+      await newQuote.save()
+      return "Quote saved successfully" 
     },
+    
+
+  
        //need to fix
-     updateQuote: async(_, {name})=>{
+    /*  updateQuote: async(_, {name})=>{
       await Quote.findByIdAndUpdate(_id,name, {
         new: true
       })
           return Quote.findOne({ _id });
     } 
-
+ */
   }
 
 }
