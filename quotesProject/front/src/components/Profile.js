@@ -21,7 +21,7 @@ if(data){
   return (
     <div className="container my-container">
      <div className='center-align'>
-         <img className='circle' style={{border:"2px solid", marginTop:"1rem"}} src="https://robohash.org/ram.png?size=150x150" alt="pic" />
+         <img className='circle' style={{border:"2px solid", marginTop:"1rem"}} src={`https://robohash.org/${data.user.firstName}.png?size=150x150`} alt="pic" />
          <h4>{data.user.firstName}</h4>
          <h6>{data.user.email}</h6>
      </div>
