@@ -39,9 +39,7 @@ const resolvers = {
       const passMatch = await bcrypt.compare(userSignin.password, user.password)
       if (!passMatch) { throw new Error("invalid credentials") }
       const token = jwt.sign({ userId: user._id }, JWT_SECRET)
-
-      return { token }
-
+      return {user, token}
     },
 
     createQuote: async (_, {name},{userId}) => {

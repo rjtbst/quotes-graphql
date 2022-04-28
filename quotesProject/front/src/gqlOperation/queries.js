@@ -27,5 +27,18 @@ export const GET_MY_PROFILE = gql`
    }
 `
 
+export const GET_INDIVIDUAL_USER = gql`
+query getIndividualUserById ($userId:ID!){
+ user: user(_id:$userId){
+    _id
+    firstName
+    lastName
+    email
+    quotes {
+      name
+    }
+  }
+}
 
+`
 
