@@ -18,7 +18,7 @@ type User {
     quotes:[Quote]
 }
 type Quote {
-    _id:ID!
+ _id:ID!
     name:String!
     by:ID!
 }

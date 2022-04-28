@@ -57,12 +57,13 @@ const resolvers = {
 
   
        //need to fix
+
     /*  updateQuote: async(_, {name})=>{
       await Quote.findByIdAndUpdate(_id,name, {
         new: true
       })
           return Quote.findOne({ _id });
-    } 
+          } 
  */
   }
 

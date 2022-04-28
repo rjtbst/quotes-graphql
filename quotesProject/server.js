@@ -1,3 +1,4 @@
+
 import {ApolloServer} from 'apollo-server';
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core';
 import typeDefs from './schemGql.js';
@@ -44,3 +45,7 @@ const server = new ApolloServer({
 server.listen().then(({url})=>{
     console.log(`server is running on : ${url}`);
 })
+
+
+
+
