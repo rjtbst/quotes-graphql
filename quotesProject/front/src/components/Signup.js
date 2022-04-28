@@ -3,16 +3,19 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { SIGNUP_USER } from '../gqlOperation/mutations'
 
+
 const Signup = () => {
     const navigate = useNavigate()
     const[signupData,setSignupData] = useState({})
+    
+
     //returns array- 1st method 2nd data
     const[signupUser,{loading,error,data}]  = useMutation(SIGNUP_USER,{
         onCompleted(data){
         navigate('/login')
         }
     })
-    
+   
     if(loading)return <h1>loading...</h1>
     
     const handleChange=(e)=>{

@@ -1,15 +1,21 @@
 import { useMutation } from '@apollo/client'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+
 import { LOGIN_USER } from '../gqlOperation/mutations'
+import { useAuth } from '../newContext/auth'
 
 const Login = () => {
+   const auth = useAuth()
     const[loginData,setLoginData] = useState({})
     const[signinUser,{error, loading, data}] = useMutation(LOGIN_USER,{
        onCompleted(data){
-            localStorage.setItem("token",data.user.token)
+         localStorage.setItem("token",data.user.token)
+         const user = data.user.user.firstName
+         auth.login(user)
+         //console.log(user)
         navigate('/')
-        }
+     }
     })
     
     if(loading){

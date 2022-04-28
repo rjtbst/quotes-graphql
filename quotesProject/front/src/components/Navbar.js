@@ -1,7 +1,10 @@
 import React from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import { useAuth, } from '../newContext/auth'
+
 const Navbar = () => {
-  const token = localStorage.getItem("token");
+
+  const auth = useAuth()
   const navigate = useNavigate()
   return (
     <nav>
@@ -10,12 +13,13 @@ const Navbar = () => {
       <ul id="nav-mobile" className="right ">
         <li><Link to="/">Home</Link></li>
         {
-          token?
+          auth.user !== null?
           <>
           <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/createQuote">Create quote</Link></li>
+        <li><Link to="/create">Create quote</Link></li>
         <li><button className="red btn" onClick={()=>{
           localStorage.removeItem("token")
+          auth.logout()
           navigate('/')
         }}>logout</button></li>
          </>:
@@ -24,9 +28,7 @@ const Navbar = () => {
         <li><Link to="/signup">Signup</Link></li>
           </>
         }
-       
-        
-      </ul>
+       </ul>
     </div>
   </nav>
   )
